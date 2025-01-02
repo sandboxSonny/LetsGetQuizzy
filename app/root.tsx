@@ -8,6 +8,8 @@ import {
 import type { LinksFunction } from "@remix-run/node";
 
 import "./tailwind.css";
+import { QuizProvider } from "./context";
+import { LoadingTransition } from "./components";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -32,7 +34,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <QuizProvider>
+          {children}
+          <LoadingTransition />
+        </QuizProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
