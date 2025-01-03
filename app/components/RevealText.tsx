@@ -17,7 +17,7 @@ export const RevealText = ({ text }: Props) => {
             scale: {
               type: "spring",
               visualDuration: 0.4,
-              delay: index * 0.5,
+              delay: index * 0.2,
             },
           }}
           key={`${text}-${index}`}
