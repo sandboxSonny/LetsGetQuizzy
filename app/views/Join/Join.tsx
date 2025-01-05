@@ -1,3 +1,11 @@
+import { PageWrapper, RevealText } from "~/components";
+
 export const Join = () => {
-  return <div>Join</div>;
+  return (
+    <PageWrapper>
+      <h1 className="text-5xl font-bold">
+        <RevealText text="Join" />
+      </h1>
+    </PageWrapper>
+  );
 };
