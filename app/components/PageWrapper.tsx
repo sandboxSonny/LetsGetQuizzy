@@ -1,13 +1,15 @@
 import { ChevronLeftIcon } from "@radix-ui/react-icons";
-import { views } from "~/consts";
 import { useQuiz } from "~/hooks";
 
 export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
-  const { view, setView } = useQuiz();
+  const { view, setView, journal, setJournal } = useQuiz();
 
   const handleBack = () => {
-    const previousStep = views.indexOf(view);
-    setView(views[previousStep - 1]);
+    const updatedJournal = journal;
+    updatedJournal.pop();
+
+    setView(updatedJournal[updatedJournal.length - 1]);
+    setJournal((previousState) => previousState.splice(-1));
   };
 
   return (

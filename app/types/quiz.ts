@@ -5,6 +5,8 @@ export interface QuizContextType {
   setGlobalLoading: Dispatch<SetStateAction<boolean>>;
   view: ViewType;
   setView: (newView: ViewType) => void;
+  journal: ViewType[];
+  setJournal: Dispatch<SetStateAction<ViewType[]>>;
 }
 
 export type ViewType = "welcome" | "about" | "join" | "host";
