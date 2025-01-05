@@ -17,6 +17,14 @@ const About = lazy(() =>
   import("~/views").then((module) => ({ default: module.About }))
 );
 
+const Join = lazy(() =>
+  import("~/views").then((module) => ({ default: module.Join }))
+);
+
+const Host = lazy(() =>
+  import("~/views").then((module) => ({ default: module.Host }))
+);
+
 export default function Index() {
   const { view } = useQuiz();
 
@@ -26,6 +34,10 @@ export default function Index() {
         return <Welcome />;
       case "about":
         return <About />;
+      case "join":
+        return <Join />;
+      case "host":
+        return <Host />;
       default:
         return <Welcome />;
     }

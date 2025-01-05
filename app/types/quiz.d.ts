@@ -5,4 +5,6 @@ export interface QuizContextType {
   setView: Dispatch<SetStateAction<ViewType>>;
 }
 
-export type ViewType = "welcome" | "about" | "contact";
+export type ViewType = "welcome" | "about" | "join" | "host";
+
+export type AnimationType = "close-side" | "close-top" | "swipe";
