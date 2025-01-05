@@ -9,6 +9,6 @@ export interface QuizContextType {
   setJournal: Dispatch<SetStateAction<ViewType[]>>;
 }
 
-export type ViewType = "welcome" | "about" | "join" | "host";
+export type ViewType = "welcome" | "about" | "join" | "host" | "waiting-room";
 
 export type AnimationType = "close-side" | "close-top" | "swipe";

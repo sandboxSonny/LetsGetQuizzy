@@ -5,9 +5,10 @@ type Props = {
   prefix?: string;
   placeholder?: string;
   name: string;
+  label?: string;
 };
 
-export const FormField = ({ prefix, placeholder, name }: Props) => {
+export const FormField = ({ prefix, placeholder, name, label }: Props) => {
   const {
     formState: { errors },
     register,
@@ -16,6 +17,7 @@ export const FormField = ({ prefix, placeholder, name }: Props) => {
 
   return (
     <div className="grid gap-2">
+      {label && <span className="text-md">{label}</span>}
       <label
         className={clsx(
           "input input-bordered flex items-center gap-2",

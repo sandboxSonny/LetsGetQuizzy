@@ -25,6 +25,14 @@ const Host = lazy(() =>
   import("~/views").then((module) => ({ default: module.Host }))
 );
 
+const WaitingRoom = lazy(() =>
+  import("~/views").then((module) => ({ default: module.WaitingRoom }))
+);
+
+const LoadingPage = lazy(() =>
+  import("~/views").then((module) => ({ default: module.LoadingPage }))
+);
+
 export default function Index() {
   const { view } = useQuiz();
 
@@ -38,10 +46,12 @@ export default function Index() {
         return <Join />;
       case "host":
         return <Host />;
+      case "waiting-room":
+        return <WaitingRoom />;
       default:
         return <Welcome />;
     }
   };
 
-  return <Suspense fallback={<div>Loading...</div>}>{renderView()}</Suspense>;
+  return <Suspense fallback={<LoadingPage />}>{renderView()}</Suspense>;
 }
