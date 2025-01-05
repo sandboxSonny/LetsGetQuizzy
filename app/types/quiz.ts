@@ -1,8 +1,10 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface QuizContextType {
   globalLoading: boolean;
   setGlobalLoading: Dispatch<SetStateAction<boolean>>;
   view: ViewType;
-  setView: Dispatch<SetStateAction<ViewType>>;
+  setView: (newView: ViewType) => void;
 }
 
 export type ViewType = "welcome" | "about" | "join" | "host";
