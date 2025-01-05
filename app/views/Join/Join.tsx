@@ -1,6 +1,6 @@
 import { PageWrapper, RevealText } from "~/components";
 import { FormField } from "~/components/FormField";
-import { JoinFormProvider } from "~/context";
+import { JoinFormProvider } from "~/providers";
 
 export const Join = () => {
   return (

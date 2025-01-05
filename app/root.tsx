@@ -8,7 +8,7 @@ import {
 import type { LinksFunction } from "@remix-run/node";
 
 import "./tailwind.css";
-import { QuizProvider } from "./context";
+import { QuizProvider } from "./providers";
 import { LoadingTransition } from "./components";
 
 export const links: LinksFunction = () => [
