@@ -1,28 +1,29 @@
 import React from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { HostFormData } from "~/types/formTypes";
-import { hostFormValidation } from "~/validations";
+import { SetupFormData } from "~/types/formTypes";
+import { setupFormValidation } from "~/validations";
 import { useQuiz } from "~/hooks";
 
-export const HostFormProvider = ({
+export const SetupFormProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
-  const methods = useForm<HostFormData>({
-    resolver: zodResolver(hostFormValidation),
+  const methods = useForm<SetupFormData>({
+    resolver: zodResolver(setupFormValidation),
   });
   const { setQuiz, setView } = useQuiz();
 
-  const onSubmit = (data: HostFormData) => {
+  const onSubmit = (data: SetupFormData) => {
+    console.log(data);
     setQuiz((previousData) => {
       return {
         ...previousData,
         ...data,
       };
     });
-    setView("setup");
+    setView("waiting-room");
   };
 
   return (

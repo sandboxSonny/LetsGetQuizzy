@@ -3,5 +3,10 @@ export interface JoinFormData {
 }
 
 export interface HostFormData {
-  id: string;
+  name: string;
+  roomName: string;
+}
+
+export interface SetupFormData {
+  categories: string[];
 }

@@ -9,7 +9,7 @@ export const Welcome = () => {
       <h1 className="text-5xl font-bold">
         Let&apos;s Get <RevealText text="Quizzy" />
       </h1>
-      <p className="py-6">
+      <p>
         Let&apos;s Get Quizzy is a web application for having... a bit of fun.
         Want to get started?
       </p>

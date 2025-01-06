@@ -1,5 +1,4 @@
-import { PageWrapper, RevealText } from "~/components";
-import { FormField } from "~/components/FormField";
+import { PageWrapper, RevealText, FormField } from "~/components";
 import { HostFormProvider } from "~/providers";
 
 export const Host = () => {

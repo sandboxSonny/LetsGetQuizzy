@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { QuizContextType, ViewType } from "~/types/quiz";
+import { QuizContextType, QuizType, ViewType } from "~/types/quiz";
 
 export const QuizContext = createContext<QuizContextType>({
   globalLoading: false,
@@ -8,12 +8,15 @@ export const QuizContext = createContext<QuizContextType>({
   setView: () => {},
   journal: ["welcome"],
   setJournal: () => {},
+  quiz: {},
+  setQuiz: () => {},
 });
 
 export const QuizProvider = ({ children }: { children: React.ReactNode }) => {
   const [globalLoading, setGlobalLoading] = useState(false);
   const [view, setView] = useState<ViewType>("welcome");
   const [journal, setJournal] = useState<ViewType[]>(["welcome"]);
+  const [quiz, setQuiz] = useState<QuizType>({});
 
   const changeView = (newView: ViewType) => {
     setGlobalLoading(true);
@@ -32,6 +35,8 @@ export const QuizProvider = ({ children }: { children: React.ReactNode }) => {
         setView: changeView,
         journal,
         setJournal,
+        quiz,
+        setQuiz,
       }}
     >
       {children}

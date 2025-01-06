@@ -1,12 +1,11 @@
 import { PageWrapper, RevealText } from "~/components";
 
-export const WaitingRoom = () => {
+export const Play = () => {
   return (
     <PageWrapper>
       <h1 className="text-5xl font-bold">
-        Waiting <RevealText text="Room" />
+        <RevealText text="Quiz" />
       </h1>
-      <p>Kick your feet up while we wait for players</p>
     </PageWrapper>
   );
 };

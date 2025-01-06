@@ -1,6 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 import { lazy, Suspense } from "react";
 import { useQuiz } from "~/hooks";
+import { Setup } from "~/views";
 
 export const meta: MetaFunction = () => {
   return [
@@ -46,6 +47,8 @@ export default function Index() {
         return <Join />;
       case "host":
         return <Host />;
+      case "setup":
+        return <Setup />;
       case "waiting-room":
         return <WaitingRoom />;
       default:

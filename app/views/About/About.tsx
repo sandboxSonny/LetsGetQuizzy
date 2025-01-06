@@ -9,7 +9,7 @@ export const About = () => {
       <h1 className="text-5xl font-bold">
         Want to learn <RevealText text="more?" />
       </h1>
-      <p className="py-6">To get started you can either host or join a game</p>
+      <p>To get started you can either host or join a game</p>
       <div className="grid md:grid-cols-2 gap-2">
         <div className="text-left flex flex-col gap-4 bg-base-100 p-4 rounded-lg">
           <h2 className="text-2xl font-bold">Host a game?</h2>

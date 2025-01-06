@@ -7,8 +7,30 @@ export interface QuizContextType {
   setView: (newView: ViewType) => void;
   journal: ViewType[];
   setJournal: Dispatch<SetStateAction<ViewType[]>>;
+  quiz: QuizType;
+  setQuiz: Dispatch<SetStateAction<QuizType>>;
 }
 
-export type ViewType = "welcome" | "about" | "join" | "host" | "waiting-room";
+export type QuizType = {
+  name?: string;
+  roomName?: string;
+};
+
+export type ViewType =
+  | "welcome"
+  | "about"
+  | "join"
+  | "host"
+  | "setup"
+  | "waiting-room";
 
 export type AnimationType = "close-side" | "close-top" | "swipe";
+
+export type TriviaCategory = {
+  id: number;
+  name: string;
+};
+
+export type TriviaCategories = {
+  trivia_categories: TriviaCategory[];
+};
