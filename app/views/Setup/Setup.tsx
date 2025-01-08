@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { PageWrapper, RevealText, CategoryItem } from "~/components";
+import { PageWrapper, RevealText, CategoryGrid } from "~/components";
 import { LoadingPage } from "../LoadingPage/LoadingPage";
 import { TriviaCategories } from "~/types/quiz";
 import { SetupFormProvider } from "~/providers";
@@ -8,7 +8,6 @@ export const Setup = () => {
   const [categories, setCategories] = useState<TriviaCategories | undefined>(
     undefined
   );
-  const [selectedCategories, setSelectedCategories] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,15 +27,9 @@ export const Setup = () => {
         Lets get you <RevealText text="setup" />
       </h1>
       <SetupFormProvider>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {categories.trivia_categories.map((category) => (
-            <CategoryItem
-              key={category.id}
-              category={category}
-              selectedCategories={selectedCategories}
-              setSelectedCategories={setSelectedCategories}
-            />
-          ))}
+        <div className="grid gap-4">
+          <CategoryGrid categories={categories.trivia_categories} />
+          <button className="btn btn-primary">Continue</button>
         </div>
       </SetupFormProvider>
     </PageWrapper>

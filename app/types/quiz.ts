@@ -14,6 +14,7 @@ export interface QuizContextType {
 export type QuizType = {
   name?: string;
   roomName?: string;
+  categories?: string[];
 };
 
 export type ViewType =

@@ -21,7 +21,9 @@ export const PageWrapper = ({
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content text-left md:text-center">
-        <div className={`max-w-${width} flex flex-col items-center gap-6`}>
+        <div
+          className={`max-w-${width} flex flex-col items-start md:items-center gap-6`}
+        >
           {view != "welcome" && (
             <button
               className="btn btn-sm btn-link"

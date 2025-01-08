@@ -1,57 +1,37 @@
 import clsx from "clsx";
+import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { TriviaCategory } from "~/types/quiz";
 
 type Props = {
   category: TriviaCategory;
-  selectedCategories: TriviaCategory[];
-  setSelectedCategories: React.Dispatch<React.SetStateAction<never[]>>;
 };
 
-export const CategoryItem = ({
-  category,
-  selectedCategories,
-  setSelectedCategories,
-}: Props) => {
+export const CategoryItem = ({ category }: Props) => {
   const { register } = useFormContext();
-  console.log(selectedCategories);
-  const selectedCategoriesValues = selectedCategories.map(
-    (category) => category.name
-  );
-
-  const handleCategoryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    const value = event.target.value;
-
-    if (selectedCategoriesValues.includes(value)) {
-      const categoryIndex = selectedCategoriesValues.indexOf(value);
-      setSelectedCategories((previousValue) =>
-        previousValue.splice(categoryIndex, 1)
-      );
-    }
-
-    setSelectedCategories((previousValue) => [...previousValue]);
-  };
+  const [isChecked, setIsChecked] = useState(false);
 
   return (
     <label
       className={clsx(
-        "p-4 rounded-lg flex flex-col items-center justify-center",
-        selectedCategoriesValues.includes(category.name)
-          ? "bg-primary"
-          : "bg-neutral"
+        "p-4 rounded-lg flex flex-col items-center justify-center text-center cursor-pointer hover:scale-105 transition-transform relative",
+        isChecked ? "bg-primary" : "bg-neutral"
       )}
     >
-      <p className="text-sm font-bold">{category.name}</p>
+      <p
+        className={clsx(
+          "text-sm font-bold",
+          isChecked && "text-primary-content"
+        )}
+      >
+        {category.name}
+      </p>
       <input
-        className="hidden"
+        className="checkbox checkbox-xs absolute top-2 right-2"
         type="checkbox"
         value={category.name}
-        {...register("category", {
-          onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-            handleCategoryChange(event);
-          },
-        })}
+        {...register("categories")}
+        onChange={(event) => setIsChecked(event.target.checked)}
       />
     </label>
   );
