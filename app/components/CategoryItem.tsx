@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { useState } from "react";
 import { useFormContext } from "react-hook-form";
+import { useQuiz } from "~/hooks";
 import { TriviaCategory } from "~/types/quiz";
 
 type Props = {
@@ -9,7 +10,10 @@ type Props = {
 
 export const CategoryItem = ({ category }: Props) => {
   const { register } = useFormContext();
-  const [isChecked, setIsChecked] = useState(false);
+  const { quiz } = useQuiz();
+  const [isChecked, setIsChecked] = useState(
+    quiz.categories?.includes(category.name)
+  );
 
   return (
     <label

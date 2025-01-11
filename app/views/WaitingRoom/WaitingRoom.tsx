@@ -3,7 +3,7 @@ import { getInitials } from "~/helpers";
 import { useQuiz } from "~/hooks";
 
 export const WaitingRoom = () => {
-  const { quiz } = useQuiz();
+  const { quiz, setView } = useQuiz();
 
   return (
     <PageWrapper>
@@ -16,22 +16,27 @@ export const WaitingRoom = () => {
         <h3 className="text-2xl font-bold">Selected Categories:</h3>
         <ul className="list-disc pl-5">
           {quiz.categories?.map((category) => (
-            <li key={category}>{category}</li>
+            <li key={category} className="text-left">
+              {category}
+            </li>
           ))}
         </ul>
       </div>
       <div className="grid gap-2">
         <h3 className="text-2xl font-bold">Current Players:</h3>
-        <div className="flex gap-2 flex-wrap">
+        <div className="flex md:justify-center gap-2 flex-wrap">
           {quiz.name && (
             <div className="avatar placeholder">
-              <div className="bg-neutral text-neutral-content w-24 rounded-full">
+              <div className="bg-neutral text-neutral-content w-12 rounded-full">
                 <span className="text-3xl">{getInitials(quiz.name)}</span>
               </div>
             </div>
           )}
         </div>
       </div>
+      <button className="btn btn-primary" onClick={() => setView("play")}>
+        Start Game
+      </button>
     </PageWrapper>
   );
 };

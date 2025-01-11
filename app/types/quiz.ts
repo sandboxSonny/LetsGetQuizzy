@@ -23,7 +23,8 @@ export type ViewType =
   | "join"
   | "host"
   | "setup"
-  | "waiting-room";
+  | "waiting-room"
+  | "play";
 
 export type AnimationType = "close-side" | "close-top" | "swipe";
 

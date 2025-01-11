@@ -1,7 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 import { lazy, Suspense } from "react";
 import { useQuiz } from "~/hooks";
-import { Setup } from "~/views";
 
 export const meta: MetaFunction = () => {
   return [
@@ -26,8 +25,16 @@ const Host = lazy(() =>
   import("~/views").then((module) => ({ default: module.Host }))
 );
 
+const Setup = lazy(() =>
+  import("~/views").then((module) => ({ default: module.Setup }))
+);
+
 const WaitingRoom = lazy(() =>
   import("~/views").then((module) => ({ default: module.WaitingRoom }))
+);
+
+const Play = lazy(() =>
+  import("~/views").then((module) => ({ default: module.Play }))
 );
 
 const LoadingPage = lazy(() =>
@@ -51,6 +58,8 @@ export default function Index() {
         return <Setup />;
       case "waiting-room":
         return <WaitingRoom />;
+      case "play":
+        return <Play />;
       default:
         return <Welcome />;
     }

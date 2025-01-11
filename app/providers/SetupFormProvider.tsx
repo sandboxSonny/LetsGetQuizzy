@@ -10,13 +10,13 @@ export const SetupFormProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
+  const { setQuiz, setView, quiz } = useQuiz();
   const methods = useForm<SetupFormData>({
     resolver: zodResolver(setupFormValidation),
+    defaultValues: quiz,
   });
-  const { setQuiz, setView } = useQuiz();
 
   const onSubmit = (data: SetupFormData) => {
-    console.log(data);
     setQuiz((previousData) => {
       return {
         ...previousData,
