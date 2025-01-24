@@ -1,17 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PageWrapper } from "~/components";
 
 export const Play = () => {
-  const countdown = 3;
-  const [timer, setTimer] = useState(countdown);
+  const [timer, setTimer] = useState(3);
 
-  const countdownInterval = setInterval(() => {
-    setTimer((previousValue) => {
-      const adjustedTimer = previousValue - 1;
-      if (adjustedTimer === 0) clearInterval(countdownInterval);
-      return adjustedTimer;
-    });
-  }, 1000);
+  useEffect(() => {
+    timer > 0 && setTimeout(() => setTimer(timer - 1), 1000);
+  }, [timer]);
 
   return (
     <PageWrapper>

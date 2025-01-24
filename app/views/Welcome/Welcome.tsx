@@ -5,7 +5,7 @@ export const Welcome = () => {
   const { setView } = useQuiz();
 
   return (
-    <PageWrapper>
+    <PageWrapper login={true}>
       <h1 className="text-5xl font-bold">
         Let&apos;s Get <RevealText text="Quizzy" />
       </h1>

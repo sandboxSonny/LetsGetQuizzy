@@ -1,11 +1,13 @@
-import { ChevronLeftIcon } from "@radix-ui/react-icons";
+import { ChevronLeftIcon, PersonIcon } from "@radix-ui/react-icons";
 import { useQuiz } from "~/hooks";
 
 export const PageWrapper = ({
   width = "md",
+  login = false,
   children,
 }: {
   width?: "sm" | "md" | "lg" | "xl";
+  login?: boolean;
   children: React.ReactNode;
 }) => {
   const { view, setView, journal, setJournal } = useQuiz();
@@ -24,6 +26,11 @@ export const PageWrapper = ({
         <div
           className={`max-w-${width} flex flex-col items-start md:items-center gap-6 w-full`}
         >
+          {login && (
+            <a href="/login" className="btn btn--text absolute top-5 right-5">
+              <PersonIcon /> Login
+            </a>
+          )}
           {view != "welcome" && (
             <button
               className="btn btn-sm btn-link"

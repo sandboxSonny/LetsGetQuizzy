@@ -37,6 +37,10 @@ const Play = lazy(() =>
   import("~/views").then((module) => ({ default: module.Play }))
 );
 
+const Login = lazy(() =>
+  import("~/views").then((module) => ({ default: module.Login }))
+);
+
 const LoadingPage = lazy(() =>
   import("~/views").then((module) => ({ default: module.LoadingPage }))
 );
@@ -60,6 +64,8 @@ export default function Index() {
         return <WaitingRoom />;
       case "play":
         return <Play />;
+      case "login":
+        return <Login />;
       default:
         return <Welcome />;
     }

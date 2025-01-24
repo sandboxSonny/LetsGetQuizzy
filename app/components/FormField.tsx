@@ -25,7 +25,13 @@ export const FormField = ({ prefix, placeholder, name, label }: Props) => {
         )}
       >
         {prefix}
-        <input type="text" placeholder={placeholder} {...register(name)} />
+        <input
+          type={name === "password" ? "password" : "text"}
+          placeholder={placeholder}
+          autoComplete="off"
+          data-1p-ignore
+          {...register(name)}
+        />
       </label>
       {error && (
         <span className="text-sm text-error">{error.message as string}</span>

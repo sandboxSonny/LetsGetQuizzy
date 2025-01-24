@@ -6,3 +6,5 @@ export { WaitingRoom } from "./WaitingRoom/WaitingRoom";
 export { LoadingPage } from "./LoadingPage/LoadingPage";
 export { Setup } from "./Setup/Setup";
 export { Play } from "./Play/Play";
+export { Login } from "./Login/Login";
+export { Register } from "./Register/Register";
