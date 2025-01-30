@@ -1,6 +1,4 @@
-import { SupabaseClient } from "@supabase/supabase-js";
 import { Dispatch, SetStateAction } from "react";
-import { Database } from "./database";
 
 export interface QuizContextType {
   globalLoading: boolean;
@@ -15,7 +13,6 @@ export interface QuizContextType {
   setAdminJournal: Dispatch<SetStateAction<AdminViewType[]>>;
   quiz: QuizType;
   setQuiz: Dispatch<SetStateAction<QuizType>>;
-  client: SupabaseClient<Database> | undefined;
 }
 
 export type QuizType = {

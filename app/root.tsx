@@ -4,19 +4,13 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
-import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
 import "./tailwind.css";
 import { QuizProvider } from "./providers";
 import { LoadingTransition } from "./components";
-import { Database } from "./types/database";
-
-type LoaderType = {
-  client?: SupabaseClient<Database>;
-};
+import { SupabaseProvider } from "./providers/SupabaseProvider";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -31,19 +25,7 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export function loader() {
-  const data: LoaderType = {};
-  if (process.env.SUPABASE_URL && process.env.SUPABASE_ANON_KEY)
-    data.client = createClient<Database>(
-      process.env.SUPABASE_URL,
-      process.env.SUPABASE_ANON_KEY
-    );
-  return data;
-}
-
 export function Layout({ children }: { children: React.ReactNode }) {
-  const data = useLoaderData<typeof loader>();
-
   return (
     <html lang="en">
       <head>
@@ -53,10 +35,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <QuizProvider client={data.client}>
-          {children}
-          <LoadingTransition />
+        <QuizProvider>
+          <SupabaseProvider>{children}</SupabaseProvider>
         </QuizProvider>
+        <LoadingTransition />
+
         <ScrollRestoration />
         <Scripts />
       </body>

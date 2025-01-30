@@ -1,10 +1,7 @@
 import { PageWrapper, RevealText, FormField } from "~/components";
-import { useQuiz } from "~/hooks";
 import { RegisterFormProvider } from "~/providers";
 
 export const Register = () => {
-  const { setAdminView } = useQuiz();
-
   return (
     <PageWrapper>
       <div className="grid gap-4">
@@ -15,13 +12,12 @@ export const Register = () => {
           <div className="grid gap-4">
             <FormField name="email" label="Email" />
             <FormField name="password" label="Password" />
-            <button className="btn btn-primary">Create Account</button>
-            <button
-              className="btn btn--text"
-              onClick={() => setAdminView("login")}
-            >
-              Login
+            <button type="submit" className="btn btn-primary">
+              Create Account
             </button>
+            <a href="/login" className="btn btn--text">
+              Login
+            </a>
           </div>
         </RegisterFormProvider>
       </div>

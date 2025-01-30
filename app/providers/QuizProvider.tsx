@@ -1,6 +1,4 @@
-import { SupabaseClient } from "@supabase/supabase-js";
 import { createContext, useState } from "react";
-import { Database } from "~/types/database";
 import {
   AdminViewType,
   QuizContextType,
@@ -21,16 +19,9 @@ export const QuizContext = createContext<QuizContextType>({
   setAdminJournal: () => {},
   quiz: {},
   setQuiz: () => {},
-  client: undefined,
 });
 
-export const QuizProvider = ({
-  client,
-  children,
-}: {
-  client: SupabaseClient<Database> | undefined;
-  children: React.ReactNode;
-}) => {
+export const QuizProvider = ({ children }: { children: React.ReactNode }) => {
   const [globalLoading, setGlobalLoading] = useState(false);
   const [view, setView] = useState<ViewType>("welcome");
   const [adminView, setAdminView] = useState<AdminViewType>("login");
@@ -69,7 +60,6 @@ export const QuizProvider = ({
         setAdminJournal,
         quiz,
         setQuiz,
-        client,
       }}
     >
       {children}
